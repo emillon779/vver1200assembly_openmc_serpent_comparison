@@ -223,7 +223,7 @@ set gcu -1
 % Use constant extrapolation for simplicity (predictor)
 set pcc 0
 
-% In 2D, the power is 174 W/cm
+% In 2D, the power is 420 W/cm
 set power 131040
 
 % Depletion steps calculated by OpenMC's operator
