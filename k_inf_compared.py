@@ -14,7 +14,7 @@ deger10= k
 time10= time
 days10 = time10/(24*60*60)
 # Read Serpent results -------------------------------------------------------
-res10 = serpentTools.read('./241am-10/vver_res.m')
+res10 = serpentTools.read('./vver_res.m')
 serpent_days = res10.resdata['burnDays'][:, 0]
 serpent_keff = unp.uarray(
     res10.resdata['absKeff'][:, 0],
