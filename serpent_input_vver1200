@@ -1,0 +1,237 @@
+% ---  VODA-VODA ENERGY REACTOR 1200 Assembly --------------------------------------
+
+set title "VODA-VODA ENERGY REACTOR 1200"
+
+% --- Fuel pin with central hole:
+
+pin 1
+helium   0.08000
+fuel   0.38000
+helium   0.38650
+clad   0.45500
+water   
+% --- Central tube:
+
+pin 2 
+water  0.05450
+clad   0.06000
+water 
+
+% --- Guide tube:
+
+pin 4 
+water  0.38000
+clad   0.45500
+water   
+
+% --- Empty lattice position:
+
+pin 3
+water   
+
+% --- Lattice (type = 2, pin pitch = 1.2750 cm):
+
+lat 10  2  0.0 0.0 23 23 1.2750
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 3
+  3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 3  
+   3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 3 
+    3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 
+     3 3 3 3 3 3 3 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 3
+      3 3 3 3 3 3 1 1 1 1 1 4 1 1 1 1 4 1 1 1 1 1 3
+       3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3
+        3 3 3 3 1 1 1 1 4 1 1 1 4 1 1 1 1 4 1 1 1 1 3
+         3 3 3 1 1 1 1 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 3 
+          3 3 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 1 1 1 1 1 3
+           3 1 1 1 1 1 4 1 1 1 1 2 1 1 1 1 4 1 1 1 1 1 3
+            3 1 1 1 1 1 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 3 3
+             3 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 1 1 1 1 3 3 3 
+              3 1 1 1 1 4 1 1 1 1 4 1 1 1 4 1 1 1 1 3 3 3 3
+               3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3
+                3 1 1 1 1 1 4 1 1 1 1 4 1 1 1 1 1 3 3 3 3 3 3
+                 3 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 3 3 3 3 3 3 3
+                  3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3
+                   3 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3
+                    3 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3 3 
+                     3 1 1 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3 3 3
+                      3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+
+% --- Surfaces (assembly pitch = 22.7 cm):
+
+surf 1  hexyc    0.0  0.0  11.555  % Shroud tube inner radius
+surf 2  hexyc    0.0  0.0  11.655  % Shroud tube outer radius
+surf 3  hexyc    0.0  0.0  11.755  % Outer boundary
+
+% --- Cells:
+
+cell  1  0  fill 10  -1        % Pin lattice                 
+cell  4  0  tube      1    -2  % Shroud tube                
+cell  5  0  water     2    -3  % Water in channel                
+cell 99  0  outside         3  % Outside world                       
+
+% --- Fuel Am241-%1 enrichment(composition given in atomic densities):
+
+mat fuel sum vol 141.537545504 burn 1
+Th-232.03c	0.00342122960573226
+U-234.03c	2.48879202510835E-06
+U-235.03c	0.000605806941976424
+U-238.03c	0.0116302283463303
+O-16.03c	0.0492259314770723
+Pu-238.03c	5.45198870587449E-05
+Pu-239.03c	0.00430563234067935
+Pu-240.03c	0.00134157738786715
+Pu-241.03c	0.000484903351116818
+Pu-242.03c	0.000190573843033255
+Am-241.03c	0.00257600524271674
+
+% --- Fuel ThO2-PuO2 (composition given in atomic densities):
+
+mat helium  -0.001598
+2003.03c  4.8088e-10
+2004.03c  0.00024043951912
+
+% --- Zircalloy cladding:
+
+mat clad   -6.55
+40091.03c  -0.10994725679002436
+40096.03c  -0.028947751411201494
+24050.03c  -4.173686536432398e-05
+24052.03c  -0.0008369936235260468
+24053.03c  -9.673586887095358e-05
+24054.03c  -2.4533642238675768e-05
+26054.03c  -9.315171073560117e-05
+26056.03c  -0.0015163752247343758
+26057.03c  -3.564608218682946e-05
+26058.03c  -4.826982343193628e-06
+50112.03c  -0.0001280150011885156
+50114.03c  -8.865813236022722e-05
+50115.03c  -4.607357438391996e-05
+50116.03c  -0.001987443043627223
+50117.03c  -0.0010588319166827192
+50118.03c  -0.0033677060749010084
+50119.03c  -0.001204557209296121
+50120.03c  -0.004607003655772829
+50122.03c  -0.0006656367398249325
+50124.03c  -0.0008460746519625024
+40090.03c  -0.4986186065354624
+40092.03c  -0.1699042107139048
+40094.03c  -0.1759321745494071
+
+% --- Water (composition given in atomic densities):
+
+mat water  -0.740582   moder lwtr 1001
+ 5010.03c  7.928e-06
+ 5011.03c  3.2072e-05
+ 1001.03c  0.04999221300000001
+ 1002.03c  7.787e-06
+ 8016.03c  0.023990904
+ 8017.03c  9.096e-06
+
+% --- Thermal scattering data for light water:
+mat tube    -6.58000
+40000.06c   -0.97500
+41093.06c   -0.02500
+
+therm lwtr lwj3.11t
+
+% --- Cross section library file path:
+
+% --- Cross section, decay, and fission yield libraries:
+
+set ures 1
+set acelib "/home/emil/v2.2.0/s2v0_endfb71.xsdata"
+set declib "/home/emil/v2.2.0/transmutation/s2v0_endfb71.dec"
+set nfylib "/home/emil/v2.2.0/transmutation/s2v0_endfb71.nfy"
+
+% --- Periodic boundary condition:
+
+set bc 3
+
+% --- Group constant generation:
+
+% universe = 0 (homogenization over all space)
+% symmetry = 12
+% 2-group structure (group boundary at 0.625 eV)
+
+set pop 6000 500 20
+
+% --- Geometry and mesh plots:
+
+% --- Geometry and mesh plots:
+
+
+
+plot 3 1000 1000 0 -50 50 -50 50
+plot 3 500 500
+mesh 3 500 500
+
+
+
+% ------------------------------------------------------------
+
+% --- Detector energy grid (uniform lethargy):
+% --- Mesh plot (flux)
+
+
+
+det F1                     % Flux detector
+
+mesh 8 -4 F1 3 500 500     % Plot detector scores
+
+
+
+% --- Detectors
+
+
+
+det d1 dc 1                % Flux in airspace between walls
+
+
+
+surf s2 cyl 160.0 160.0 5.0  
+
+det d2 dtl s2              % Flux at y = 160 (between the walls)
+
+
+
+surf s3 cyl 350.0 350.0 5.0  
+
+det d3 dtl s3              % Flux at y = 350 (outside the concrete wall)
+
+% --- Detector energy grid (uniform lethargy):
+
+ene 1 3 1000 1E-9 12.0
+
+% --- Flux per lethargy:
+
+det 1 de 1 dt -3
+
+% --- Differential capture, fission and production spectra:
+
+det 2 de 1 dt -2 dr -2 void
+det 3 de 1 dt -2 dr -6 void
+det 4 de 1 dt -2 dr -7 void
+
+% --- Integral capture, fission and production spectra:
+
+det 5 de 1 dt -1 dr -2 void
+det 6 de 1 dt -1 dr -6 void
+det 7 de 1 dt -1 dr -7 void
+
+% --- Depletion
+set gcu -1
+% Use constant extrapolation for simplicity (predictor)
+set pcc 0
+
+% In 2D, the power is 174 W/cm
+set power 131040
+
+% Depletion steps calculated by OpenMC's operator
+dep butot
+0.1 0.5 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.5 15.0 17.5 20.0 22.5 25.0 27.5 30.0 32.5 35.0 37.5 40.0 42.5 45.0 47.5 50.0 52.5 55.0 57.5 60.0 62.5 65.0 67.5 70.0 72.5 75.0 77.5 80.0 82.5 85.0 87.5 90.0 92.5 95.0 97.5 100.0
+
+% --- Isotope list for inventory calculation:
+
+set inventory all
+
+% ------------------------------------------------------------
